@@ -65,7 +65,7 @@ namespace Excel_Compare
 
         private void 使用帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("");
+            MessageBox.Show("1、选择输出文件夹、原始文件、被比较文件\n2、点击开始\n注意：excel表格须满足要求：第一行为属性名，第一列为主码");
         }
 
         private void 选择输出文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,12 +211,14 @@ namespace Excel_Compare
                 old_column_stas.Add(tmp_sta);//不存在则返回-1,否则返回下标
                 if (tmp_sta == -1)
                 {
+                    textBox2.Text += "第" + (i + 1) + "列，列名为:" + tmp_column_name + "\r\n";
                     for (j = 0; j < old_row_num; j++)//第一行也考虑在内
                     {
                         row1 = sheet1.GetRow(j);
                         row1.GetCell(i).CellStyle = s_add1;
                     }
                 }
+                label13.Text = "正在比较原始文件第" + (i + 1) + "列……";
             }
             //新列对应旧列状态
             for (i = 0; i < new_col_num; i++)
@@ -226,12 +228,14 @@ namespace Excel_Compare
                 new_column_stas.Add(tmp_sta);
                 if (tmp_sta == -1)
                 {
+                    textBox4.Text += "第" + (i + 1) + "列，列名为:" + tmp_column_name + "\r\n";
                     for (j = 0; j < new_row_num; j++)
                     {
                         row2 = sheet2.GetRow(j);
                         row2.GetCell(i).CellStyle = s_add2;
                     }
                 }
+                label13.Text = "正在比较被比较文件第" + (i + 1) + "列……";
             }
             #endregion
             #region 处理不同行
@@ -254,12 +258,14 @@ namespace Excel_Compare
                 old_row_stas.Add(tmp_sta);
                 if (tmp_sta == -1)//不存在对应行
                 {
+                    textBox1.Text += "第" + (i + 1) + "行，主码为:" + tmp_row_name + "\r\n";
                     row1 = sheet1.GetRow(i);
                     for (j = 0; j < old_col_num; j++)
                     {
                         row1.GetCell(j).CellStyle = s_add1;
                     }
                 }
+                label13.Text = "正在比较原始文件第" + (i + 1) + "行……";
             }
             //新行对应旧行状态
             for (i = 0; i < new_row_num; i++)
@@ -269,18 +275,21 @@ namespace Excel_Compare
                 new_row_stas.Add(tmp_sta);
                 if (tmp_sta == -1)
                 {
+                    textBox3.Text += "第" + (i + 1) + "行，主码为:" + tmp_row_name + "\r\n";
                     row2 = sheet2.GetRow(i);
                     for (j = 0; j < old_col_num; j++)
                     {
                         row2.GetCell(j).CellStyle = s_add2;
                     }
                 }
+                label13.Text = "正在比较被比较文件第" + (i + 1) + "行……";
             }
             #endregion
             #region 处理不同单元格
             //旧表格
             for (i = 1; i < old_row_num; i++)
             {
+                label13.Text = "正在比较原始文件第" + i + "行……";
                 tmp_row = old_row_stas[i];
                 if (tmp_row != -1)
                 {
@@ -297,6 +306,7 @@ namespace Excel_Compare
                                 tmp_cell2 = row2.GetCell(tmp_col).ToString();
                                 if (string.Compare(tmp_cell, tmp_cell2) != 0)
                                 {
+                                    textBox5.Text += "第" + (i + 1) + "行,第" + (j + 1) + "列："+ row1.GetCell(j).ToString()+ "\r\n";
                                     row1.GetCell(j).CellStyle = s_dif1;
                                     row2.GetCell(tmp_col).CellStyle = s_dif2;
                                 }
@@ -305,6 +315,7 @@ namespace Excel_Compare
                     }
                 }
             }
+            label13.Text = "比较完成！";
             #endregion
             //保存文件
             fs1 = new FileStream(out_file1, FileMode.Open, FileAccess.Write);
@@ -313,6 +324,8 @@ namespace Excel_Compare
             fs2 = new FileStream(out_file2, FileMode.Open, FileAccess.Write);
             wk2.Write(fs2);
             fs2.Close();
+            wk1.Close();
+            wk2.Close();
             MessageBox.Show("比较完成!");
         }
 
@@ -323,6 +336,8 @@ namespace Excel_Compare
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            out_file_folder= System.AppDomain.CurrentDomain.BaseDirectory;
+            label2.Text = out_file_folder;
             old_colums = new List<string>();
             new_colums = new List<string>();
             old_rows = new List<string>();
