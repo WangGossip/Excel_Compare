@@ -1,0 +1,17 @@
+E:\兼职\资产处\Excel_Compare\bin\Debug\Excel_Compare.exe.config
+E:\兼职\资产处\Excel_Compare\bin\Debug\Excel_Compare.exe
+E:\兼职\资产处\Excel_Compare\bin\Debug\Excel_Compare.pdb
+E:\兼职\资产处\Excel_Compare\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\兼职\资产处\Excel_Compare\bin\Debug\NPOI.dll
+E:\兼职\资产处\Excel_Compare\bin\Debug\NPOI.OOXML.dll
+E:\兼职\资产处\Excel_Compare\bin\Debug\NPOI.OpenXml4Net.dll
+E:\兼职\资产处\Excel_Compare\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\兼职\资产处\Excel_Compare\bin\Debug\ICSharpCode.SharpZipLib.pdb
+E:\兼职\资产处\Excel_Compare\bin\Debug\ICSharpCode.SharpZipLib.xml
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.csprojAssemblyReference.cache
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.Form1.resources
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.Properties.Resources.resources
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.csproj.GenerateResource.cache
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.csproj.CopyComplete
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.exe
+E:\兼职\资产处\Excel_Compare\obj\Debug\Excel_Compare.pdb
